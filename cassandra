@@ -1,0 +1,100 @@
+#creating namespace
+CREATE KEYSPACE institution WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 2};
+
+use institution;
+
+#creating Table
+
+cqlsh:institution> CREATE TABLE students (
+               ...    regno text PRIMARY KEY,
+               ...    name text,
+               ...    class text,
+               ...    email text,
+               ...    phone text,
+               ...    department text,
+               ...    year int
+               ... );
+
+#inserting values
+
+cqlsh:institution> INSERT INTO students (regno, name,class, email, phone, department, year) VALUES ('20itro25', 'Hari v', '20itr6a', 'hari@gmail.com', '98585858589', 'IT', 3);
+
+cqlsh:institution> INSERT INTO students (regno, name,class, email, phone, department, year) VALUES ('20itro24', 'Harish b', '20itr6a', 'harishb@gmail.com', '78585858589', 'IT', 3);
+
+cqlsh:institution> INSERT INTO students (regno, name,class, email, phone, department, year) VALUES ('20itro26', 'Harish c', '20itr6a', 'harishc@gmail.com', '98585858589', 'IT', 3);
+
+cqlsh:institution> INSERT INTO students (regno, name,class, email, phone, department, year) VALUES ('20itro27', 'Harish k', '20itr6a', 'harishk@gmail.com', '98585858589', 'IT', 3);
+
+cqlsh:institution> INSERT INTO students (regno, name,class, email, phone, department, year) VALUES ('20itro28', 'Harish v', '20itr6a', 'hari@gmail.com', '7585858589', 'IT', 3);
+
+cqlsh:institution> INSERT INTO students (regno, name,class, email, phone, department, year) VALUES ('20itro30', 'Indrajith N', '20itr6a', 'Indrajith@gmail.com', '9745858589', 'IT', 3);
+
+cqlsh:institution> INSERT INTO students (regno, name,class, email, phone, department, year) VALUES ('20ecro31', 'Bala M', '20itr6a', 'Bala@gmail.com', '68585858589', 'IT', 3);
+
+cqlsh:institution> INSERT INTO students (regno, name,class, email, phone, department, year) VALUES ('20csro32', 'karthik', '20csr6a', 'karthik@gmail.com', '98585858589', 'cs', 3);
+
+cqlsh:institution> INSERT INTO students (regno, name,class, email, phone, department, year) VALUES ('20csro33', 'ashwin', '20csr6a', 'ashwin@gmail.com', '78585858589', 'cs', 3);
+
+#displaying values
+
+ regno    | class   | department | email               | name        | phone       | year
+----------+---------+------------+---------------------+-------------+-------------+------
+ 20csro32 | 20csr6a |         cs |   karthik@gmail.com |     karthik | 98585858589 |    3
+ 20itro27 | 20itr6a |         IT |   harishk@gmail.com |    Harish k | 98585858589 |    3
+ 20itro24 | 20itr6a |         IT |   harishb@gmail.com |    Harish b | 78585858589 |    3
+ 20itro30 | 20itr6a |         IT | Indrajith@gmail.com | Indrajith N |  9745858589 |    3
+ 20csro33 | 20csr6a |         cs |    ashwin@gmail.com |      ashwin | 78585858589 |    3
+ 20itro26 | 20itr6a |         IT |   harishc@gmail.com |    Harish c | 98585858589 |    3
+ 20ecro31 | 20itr6a |         IT |      Bala@gmail.com |      Bala M | 68585858589 |    3
+ 20itro28 | 20itr6a |         IT |      hari@gmail.com |    Harish v |  7585858589 |    3
+ 20itro25 | 20itr6a |         IT |      hari@gmail.com |      Hari v | 98585858589 |    3
+
+
+#creating Table
+
+cqlsh:institution> CREATE TABLE extradetails (
+               ...    regno text PRIMARY KEY,
+               ...    name text,
+               ...    type text,
+               ...    department text,
+               ...    roomoraddres text
+               ... );
+               
+#inserting values
+
+cqlsh:institution> INSERT INTO extradetails(regno, name,type, department,roomoraddres) VALUES ('20itro25', 'Hari v', 'day-scholar', 'IT', 'tirupur');
+
+cqlsh:institution> INSERT INTO extradetails(regno, name,type, department, roomoraddres) VALUES ('20itro24', 'Harish b', 'hostel', 'IT', '203');
+
+cqlsh:institution> INSERT INTO extradetails(regno, name,type,  department, roomoraddres) VALUES ('20itro26', 'Harish c', 'day-scholar', 'IT', 'erode');
+
+cqlsh:institution> INSERT INTO extradetails(regno, name,type,  department, roomoraddres) VALUES ('20itro27', 'Harish k', 'hostel', 'IT', '205');
+
+cqlsh:institution> INSERT INTO extradetails(regno, name,type,  department, roomoraddres) VALUES ('20itro28', 'Harish v', 'day-scholar', 'IT', 'coimbator');
+
+cqlsh:institution> INSERT INTO extradetails(regno, name,type,  department, roomoraddres) VALUES ('20itro30', 'Indrajith N', 'hostel', 'IT', '205');
+
+cqlsh:institution> INSERT INTO extradetails(regno, name,type,  department, roomoraddres) VALUES ('20ecro31', 'Bala M', 'day-scholar', 'IT', 'erode');
+
+cqlsh:institution> INSERT INTO extradetails(regno, name,type, department, roomoraddres) VALUES ('20csro32', 'karthik', 'hostel', 'cs', '201');
+
+cqlsh:institution> INSERT INTO extradetails(regno, name,type,department, roomoraddres) VALUES ('20csro33', 'ashwin', 'day-scholar', 'cs', 'Tirupur');
+
+#displaying table
+
+
+cqlsh:institution> select * from extradetails;
+
+ regno    | department | name        | roomoraddres | type
+----------+------------+-------------+--------------+-------------
+ 20csro32 |         cs |     karthik |          201 |      hostel
+ 20itro27 |         IT |    Harish k |          205 |      hostel
+ 20itro24 |         IT |    Harish b |          203 |      hostel
+ 20itro30 |         IT | Indrajith N |          205 |      hostel
+ 20csro33 |         cs |      ashwin |      Tirupur | day-scholar
+ 20itro26 |         IT |    Harish c |        erode | day-scholar
+ 20ecro31 |         IT |      Bala M |        erode | day-scholar
+ 20itro28 |         IT |    Harish v |    coimbator | day-scholar
+ 20itro25 |         IT |      Hari v |      tirupur | day-scholar
+
+(9 rows)
